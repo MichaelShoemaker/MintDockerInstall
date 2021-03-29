@@ -1,0 +1,34 @@
+#!/bin/bash
+#Remove any programs associated with docker that may have been previously installed
+sudo apt-get remove docker docker-engine docker.io containerd runc -y
+
+sudo apt-get update -y
+
+#Install necessary dependencies
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common -y
+
+#Get the necessary key
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+#Add the correct repo to get Docker for Linux Mint
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(. /etc/os-release; echo "$UBUNTU_CODENAME") stable"
+
+sudo apt update -y
+
+#Install Docker
+sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+
+#Add the last user logged in to the Docker Group
+sudo usermod -aG docker last|cut -d " " -f 1|sed -n 1p 
+
+
+#Docker Compose
+#Comment out the lines below if you do not wish to install Docker Compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.28.6/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
