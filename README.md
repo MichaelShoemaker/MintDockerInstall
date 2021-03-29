@@ -7,5 +7,6 @@ Note: This script has only been tested on Linux Mint 20.1 ulyssa
 
 Instructions:
 Simply download the MintDockerInstall script and execute the following:
+
 ```chmod +x MintDockerInstall```
 ```sudo ./MintDockerInstall```
