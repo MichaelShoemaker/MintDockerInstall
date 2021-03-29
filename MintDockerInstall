@@ -24,7 +24,7 @@ sudo apt update -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
 #Add the last user logged in to the Docker Group
-sudo usermod -aG docker last|cut -d " " -f 1|sed -n 1p 
+sudo usermod -aG docker $(last|cut -d " " -f 1|sed -n 1p) 
 
 
 #Docker Compose
