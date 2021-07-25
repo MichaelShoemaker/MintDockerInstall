@@ -28,7 +28,9 @@ sudo usermod -aG docker $(last|cut -d " " -f 1|sed -n 1p)
 
 
 #Docker Compose
-#Comment out the lines below if you do not wish to install Docker Compose
-sudo curl -L "https://github.com/docker/compose/releases/download/1.28.6/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-
-sudo chmod +x /usr/local/bin/docker-compose
+#pass the keyword "all" when executing this script to install docker compose as well
+if [[ $1 == "all" ]]
+then
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.28.6/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+fi
