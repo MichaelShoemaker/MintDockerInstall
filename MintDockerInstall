@@ -35,5 +35,5 @@ then
     sudo chmod +x /usr/local/bin/docker-compose
 fi
 
-#Switch user to the current user for group permissions to take effect
-su - $USER
+#Use new group membership immediately
+newgrp docker
